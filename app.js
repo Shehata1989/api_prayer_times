@@ -1,3 +1,4 @@
+
 const dropdownToggle = document.getElementById("dropdownToggle");
 const dropdownMenu = document.getElementById("dropdownMenu");
 
@@ -18,12 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
       dropdownToggle.children[0].textContent = e.target.textContent;
       dropdownToggle.classList.remove("open");
       dropdownMenu.classList.remove("open");
-  
+
       // ابحث عن اسم المدينة الصحيح في الـ array
       const selectedCity = array.find(
         (city) => city.cityName === e.target.textContent
       );
-  
+
       if (selectedCity) {
         document.getElementById("city").textContent = selectedCity.cityName;
         getTimingsByCity(selectedCity.name); // مرر الاسم الإنجليزي للمدينة
@@ -93,20 +94,25 @@ function getTimingsByCity(country) {
 
   const url = `http://api.aladhan.com/v1/timingsByCity?city=EG&country=${country}`;
 
-  axios.get(url, { params: params }).then((response) => {
-    const myData = [response.data.data];
+  axios
+    .get(url, { params: params })
+    .then((response) => {
+      const myData = [response.data.data];
 
-    for (data of myData) {
-      fillTime("Fajr", data.timings.Fajr);
-      fillTime("Dhuhr", data.timings.Dhuhr);
-      fillTime("Asr", data.timings.Asr);
-      fillTime("Maghrib", data.timings.Maghrib);
-      fillTime("Isha", data.timings.Isha);
-    }
+      for (data of myData) {
+        fillTime("Fajr", data.timings.Fajr);
+        fillTime("Dhuhr", data.timings.Dhuhr);
+        fillTime("Asr", data.timings.Asr);
+        fillTime("Maghrib", data.timings.Maghrib);
+        fillTime("Isha", data.timings.Isha);
+      }
 
-    document.getElementById("date").textContent =
-      data.date.hijri.weekday.ar + " " + data.date.readable;
-  });
+      document.getElementById("date").textContent =
+        data.date.hijri.weekday.ar + " " + data.date.readable;
+    })
+    .catch((error) => {
+      console.error("Error fetching data from API:", error);
+    });
 }
 
 getTimingsByCity();
