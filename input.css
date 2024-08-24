@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-image: linear-gradient(
+    to left bottom,
+    #051937,
+    #133660,
+    #1d578d,
+    #1f7abb,
+    #12a0eb
+  );
+  max-width: 100%;
+}
+
+.dropdown {
+  position: relative;
+  width: 300px;
+}
+
+.dropdown-toggle {
+  background-color: rgb(25, 66, 105);
+  color: #fff;
+  padding: 10px;
+  border: 1px solid rgb(52, 123, 189);
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-toggle.open {
+  background-color: rgb(25, 66, 105);
+  color: #fff;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: rgb(25, 66, 105);
+  border: 1px solid rgb(25, 66, 105);
+  border-radius: 5px;
+  box-shadow: 0px 3px 3px 0px rgb(0, 188, 212);
+  width: 100%;
+  z-index: 1;
+  margin-top: 5px;
+}
+
+.dropdown-menu.open {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 10px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.dropdown-menu li:hover {
+  background-color: rgb(46, 174, 190);
+}
+
+.dropdown-toggle i {
+  transition: transform 0.3s ease;
+}
+
+.dropdown-toggle.open i {
+  transform: rotate(180deg);
+}
