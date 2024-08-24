@@ -92,7 +92,7 @@ function getTimingsByCity(country) {
     country: country,
   };
 
-  const url = `http://api.aladhan.com/v1/timingsByCity?city=EG&country=${country}`;
+  const url = `https://api.aladhan.com/v1/timingsByCity?city=EG&country=${country}`;
 
   axios
     .get(url, { params: params })
