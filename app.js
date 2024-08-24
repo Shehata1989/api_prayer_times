@@ -4,7 +4,7 @@ const dropdownMenu = document.getElementById("dropdownMenu");
 document.addEventListener("DOMContentLoaded", () => {
   dropdownToggle.children[0].textContent = dropdownMenu.children[0].textContent;
   document.getElementById("city").textContent =
-  dropdownMenu.children[0].textContent;
+    dropdownMenu.children[0].textContent;
 
   // Toggle dropdown menu
   dropdownToggle.addEventListener("click", () => {
@@ -71,7 +71,6 @@ const array = [
     cityName: "بورسعيد",
     name: "	Bur Sa'id",
   },
-
 ];
 
 for (let city = 0; city < array.length; city++) {
@@ -89,8 +88,7 @@ function getTimingsByCity(country) {
     country: country,
   };
 
-  const url =
-    "http://api.aladhan.com/v1/timingsByCity?city=EG&country=Al Iskandariyah";
+  const url = `http://api.aladhan.com/v1/timingsByCity?city=EG&country=${country}`;
 
   axios.get(url, { params: params }).then((response) => {
     const myData = [response.data.data];
