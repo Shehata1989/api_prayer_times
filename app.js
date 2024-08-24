@@ -69,7 +69,7 @@ const array = [
   },
   {
     cityName: "دمياط",
-    name: "	Dumyat",
+    name: "Damietta",
   },
   {
     cityName: "بورسعيد",
