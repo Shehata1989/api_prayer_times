@@ -18,13 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
       dropdownToggle.children[0].textContent = e.target.textContent;
       dropdownToggle.classList.remove("open");
       dropdownMenu.classList.remove("open");
-
-      // Get city name from the selected item
-      const countryName = e.target.textContent;
-      document.getElementById("city").textContent = e.target.textContent;
-
-      // Call the API with the selected city name
-      getTimingsByCity(countryName);
+  
+      // ابحث عن اسم المدينة الصحيح في الـ array
+      const selectedCity = array.find(
+        (city) => city.cityName === e.target.textContent
+      );
+  
+      if (selectedCity) {
+        document.getElementById("city").textContent = selectedCity.cityName;
+        getTimingsByCity(selectedCity.name); // مرر الاسم الإنجليزي للمدينة
+      }
     }
   });
 
