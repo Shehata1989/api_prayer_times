@@ -123,11 +123,21 @@ function getTimingsByCity(country) {
       const myData = [response.data.data];
 
       for (data of myData) {
-        fillTime("Fajr", data.timings.Fajr);
-        fillTime("Dhuhr", data.timings.Dhuhr);
-        fillTime("Asr", data.timings.Asr);
-        fillTime("Maghrib", data.timings.Maghrib);
-        fillTime("Isha", data.timings.Isha);
+        function time12(timeApi) {
+          let time24 = timeApi;
+          let [hours, minutes] = time24.split(":");
+          hours = parseInt(hours, 10);
+
+          let period = hours >= 12 ? "PM" : "AM";
+          hours = hours % 12 || 12;
+          return `${hours}:${minutes} ${period}`;
+        }
+
+        fillTime("Fajr", time12(data.timings.Fajr));
+        fillTime("Dhuhr", time12(data.timings.Dhuhr));
+        fillTime("Asr", time12(data.timings.Asr));
+        fillTime("Maghrib", time12(data.timings.Maghrib));
+        fillTime("Isha", time12(data.timings.Isha));
       }
 
       document.getElementById("date").textContent =
