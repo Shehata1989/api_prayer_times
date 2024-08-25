@@ -1,4 +1,3 @@
-
 const dropdownToggle = document.getElementById("dropdownToggle");
 const dropdownMenu = document.getElementById("dropdownMenu");
 
@@ -85,6 +84,30 @@ for (let city = 0; city < array.length; city++) {
 }
 
 // #######################################################
+
+function updateTime() {
+  let dateNow = new Date();
+
+  let hours = dateNow.getHours();
+  let minutes = dateNow.getMinutes().toString().padStart(2, "0");
+  let seconds = dateNow.getSeconds().toString().padStart(2, "0");
+  let milliseconds = dateNow.getMilliseconds().toString().padStart(3, "0");
+
+  let period = hours >= 12 ? "PM" : "AM";
+
+  hours = hours % 12 || 12;
+
+  let fullTime = `${period} ${hours}:${minutes}:${seconds}`;
+
+  // تحديث عنصر في الصفحة بالوقت
+  document.getElementById("dateNow").textContent = fullTime;
+}
+
+// تحديث الوقت كل ثانية
+setInterval(updateTime, 1000);
+
+// استدعاء الوظيفة مرة واحدة عند التحميل الأولي للصفحة
+updateTime();
 
 function getTimingsByCity(country) {
   let params = {
