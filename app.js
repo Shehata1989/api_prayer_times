@@ -91,7 +91,6 @@ function updateTime() {
   let hours = dateNow.getHours();
   let minutes = dateNow.getMinutes().toString().padStart(2, "0");
   let seconds = dateNow.getSeconds().toString().padStart(2, "0");
-  let milliseconds = dateNow.getMilliseconds().toString().padStart(3, "0");
 
   let period = hours >= 12 ? "PM" : "AM";
 
